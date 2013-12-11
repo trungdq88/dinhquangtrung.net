@@ -3,16 +3,34 @@
     <head>
         <title>Welcome!</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="icon" type="image/png" href="css/images/icon.ico">
+
         <link rel="stylesheet" type="text/css" href="css/csfont.css">
         <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-
+        <!--[if lt IE 10]>
+            <link rel="stylesheet" type="text/css" href="css/ie8.css">   
+        <![endif]-->
         <script type="text/javascript" src="js/lib/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="js/lib/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/lib/preloadjs-0.4.0.min.js"></script>
+        <script type="text/javascript" src="js/lib/soundjs-0.5.0.min.js"></script>
+
 	  	<script>
+        var soundStack = {};
+        function playsound(soundname) {
+            createjs.Sound.play(soundname);
+        }
+        
+
 	  	$(function() {
-	    	$( "#console-dialog" ).draggable().resizable();
+	    	// Set console dialog draggable
+            $( "#console-dialog" ).draggable().resizable();
+
+            // Focus the command line
 	    	$('#console-dialog .commandbar input').focus();
+
+            // Event for console dialog
 	    	$(document).keydown(function(e) {
 	    		if (e.keyCode === 192) {
 	    			e.preventDefault();
@@ -22,6 +40,14 @@
 	    			});
 	    		}
 	    	});
+
+            // Event for sound effect on menu hover
+            $('.menupart a').mouseenter(function() {
+                playsound('menuhover');
+            });
+
+            // Preload sounds
+            createjs.Sound.registerSound({src:"sound/menuhover.wav", id:"menuhover"});
 	  	});
 	  	</script>
     </head>
@@ -45,7 +71,7 @@
         				<li><a >REPORT BUG</a></li>
         				<li><a >VIDEO STRESS TEST</a></li>
         				<li><a >OPTIONS</a></li>
-        				<li><a onclick="window.close()">QUIT</a></li>
+        				<li><a >QUIT</a></li>
         			</ul>
         		</div>
         		<div class="menupart"></div>
@@ -58,9 +84,10 @@
         		Console
         	</div>
 		  <div class="logwindow">
-		  	<textarea readonly="true">
+		  	<textarea readonly="true">============================================================================ 
 =..........................................................................= 
-=.......... I'm not a Counter Strike gamer, just love this theme ..........= 
+=.......................... Welcome to my website .........................= 
+=.............. I'm not a big fan of CS, just love this theme .............= 
 =..........................................................................= 
 ============================================================================ 
 
@@ -72,7 +99,7 @@ Exe build: 20:34:24 Jul  7 2010 (4260) (240)
 </textarea>
 		  </div>
 		  <div class="commandbar">
-		  	<input type="text"/> <a  class="cs-button">Submit</a>
+		  	<input type="text"/> <a class="cs-button">Submit</a>
 		  </div>
 		</div>
     </body>
