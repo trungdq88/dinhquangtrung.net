@@ -28,7 +28,7 @@ html, body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	-o-user-select: none;
-
+	cursor: default;
 }
 
 body {

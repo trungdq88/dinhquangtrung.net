@@ -12,9 +12,14 @@
 	  	<script>
 	  	$(function() {
 	    	$( "#console-dialog" ).draggable().resizable();
+	    	$('#console-dialog .commandbar input').focus();
 	    	$(document).keydown(function(e) {
 	    		if (e.keyCode === 192) {
-	    			$('#console-dialog').stop().fadeToggle();
+	    			e.preventDefault();
+	    			$('#console-dialog .commandbar input').val('');
+	    			$('#console-dialog').stop().fadeToggle(function() {
+	    				$('#console-dialog .commandbar input').focus();
+	    			});
 	    		}
 	    	});
 	  	});
@@ -55,7 +60,7 @@
 		  <div class="logwindow">
 		  	<textarea readonly="true">
 =..........................................................................= 
-=................... For updates visit css.setti.info .....................= 
+=.......... I'm not a Counter Strike gamer, just love this theme ..........= 
 =..........................................................................= 
 ============================================================================ 
 
