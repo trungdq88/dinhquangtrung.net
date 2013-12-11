@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome!</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/csfont.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+
+        <script type="text/javascript" src="js/lib/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/lib/jquery-ui.js"></script>
+	  	<script>
+	  	$(function() {
+	    	$( "#console-dialog" ).draggable().resizable();
+	    	$(document).keydown(function(e) {
+	    		if (e.keyCode === 192) {
+	    			$('#console-dialog').stop().fadeToggle();
+	    		}
+	    	});
+	  	});
+	  	</script>
+    </head>
+    <body>
+        <div id="container">
+        	<h2 class="cs-title">counter-strike</h2>
+        	<div id="sidemenu">
+        		<div class="menupart">
+        			<ul>
+        				<li><a >Setti CSS Server</a></li>
+        				<li><a >Setti CSS Server (Pub #2)</a></li>
+        				<li><a >Setti CSS Server (Pub #3)</a></li>
+        				<li><a >Setti CSS Server (Pub #4)</a></li>
+        			</ul>
+        		</div>
+        		<div class="menupart">
+        			<ul>
+        				<li><a >FIND SERVERS</a></li>
+        				<li><a >CREATE SERVER</a></li>
+        				<li><a >ARCHIVEMENTS</a></li>
+        				<li><a >REPORT BUG</a></li>
+        				<li><a >VIDEO STRESS TEST</a></li>
+        				<li><a >OPTIONS</a></li>
+        				<li><a onclick="window.close()">QUIT</a></li>
+        			</ul>
+        		</div>
+        		<div class="menupart"></div>
+        	</div>
+        </div>
+
+        <div id="console-dialog" style="width: 700px; height: 400px; right: 100px; top: 100px;" class="cs-dialog">
+    		<div onclick="$('#console-dialog').fadeOut();" class="closebutton"><img src="css/images/cs-close-button.png"/></div>
+        	<div class="titlebar">
+        		Console
+        	</div>
+		  <div class="logwindow">
+		  	<textarea readonly="true">
+=..........................................................................= 
+=................... For updates visit css.setti.info .....................= 
+=..........................................................................= 
+============================================================================ 
+
+
+Protocol version 15
+Exe version 1.0.0.41 (cstrike)
+Exe build: 20:34:24 Jul  7 2010 (4260) (240)
+
+</textarea>
+		  </div>
+		  <div class="commandbar">
+		  	<input type="text"/> <a  class="cs-button">Submit</a>
+		  </div>
+		</div>
+    </body>
+</html>
