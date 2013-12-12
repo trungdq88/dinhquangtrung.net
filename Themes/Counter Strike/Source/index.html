@@ -16,40 +16,13 @@
         <script type="text/javascript" src="js/lib/preloadjs-0.4.0.min.js"></script>
         <script type="text/javascript" src="js/lib/soundjs-0.5.0.min.js"></script>
 
-	  	<script>
-        var soundStack = {};
-        function playsound(soundname) {
-            createjs.Sound.play(soundname);
-        }
         
+        <script type="text/javascript" src="js/helper.js"></script>
+        <script type="text/javascript" src="js/csclipboard.js"></script>
+        <script type="text/javascript" src="js/cmdfactory.js"></script>
+        <script type="text/javascript" src="js/csconsole.js"></script>
 
-	  	$(function() {
-	    	// Set console dialog draggable
-            $( "#console-dialog" ).draggable().resizable();
-
-            // Focus the command line
-	    	$('#console-dialog .commandbar input').focus();
-
-            // Event for console dialog
-	    	$(document).keydown(function(e) {
-	    		if (e.keyCode === 192) {
-	    			e.preventDefault();
-	    			$('#console-dialog .commandbar input').val('');
-	    			$('#console-dialog').stop().fadeToggle(function() {
-	    				$('#console-dialog .commandbar input').focus();
-	    			});
-	    		}
-	    	});
-
-            // Event for sound effect on menu hover
-            $('.menupart a').mouseenter(function() {
-                playsound('menuhover');
-            });
-
-            // Preload sounds
-            createjs.Sound.registerSound({src:"sound/menuhover.wav", id:"menuhover"});
-	  	});
-	  	</script>
+        <script type="text/javascript" src="js/main.js"></script>
     </head>
     <body>
         <div id="container">
@@ -70,7 +43,7 @@
         				<li><a >ARCHIVEMENTS</a></li>
         				<li><a >REPORT BUG</a></li>
         				<li><a >VIDEO STRESS TEST</a></li>
-        				<li><a >OPTIONS</a></li>
+        				<li><a onclick="$('#console-dialog').fadeIn()">CONSOLE</a></li>
         				<li><a >QUIT</a></li>
         			</ul>
         		</div>
@@ -84,19 +57,21 @@
         		Console
         	</div>
 		  <div class="logwindow">
-		  	<textarea readonly="true">============================================================================ 
+		  	<pre><div class="textarea">============================================================================ 
 =..........................................................................= 
 =.......................... Welcome to my website .........................= 
 =.............. I'm not a big fan of CS, just love this theme .............= 
+=...................... (the game is playable, btw) .......................= 
 =..........................................................................= 
 ============================================================================ 
 
 
-Protocol version 15
-Exe version 1.0.0.41 (cstrike)
-Exe build: 20:34:24 Jul  7 2010 (4260) (240)
+Now: 2013-12-12 02:49:23
+Media by: Counter Strike 1.6 Source | This console: myself
+Version: 1.0.1
+Use 'help' for, you know, help.
 
-</textarea>
+</div></pre>
 		  </div>
 		  <div class="commandbar">
 		  	<input type="text"/> <a class="cs-button">Submit</a>
