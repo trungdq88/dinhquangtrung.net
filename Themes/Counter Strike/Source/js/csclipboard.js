@@ -24,7 +24,7 @@ function CSClipboard() {
             if (CSConsole.clipboard._queue.length > CSConsole.clipboard.config.maxEntry) {
                 CSConsole.clipboard._queue.splice(0, 1);
             } else {
-                CSConsole.clipboard._cursor++;
+                CSConsole.clipboard._cursor = CSConsole.clipboard._queue.length;
             }
         },
         resetCursor: function() {

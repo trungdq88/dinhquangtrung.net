@@ -13,7 +13,7 @@ $(function() {
 
     // Set console dialog draggable
     $("#console-dialog").draggable({
-    	cancel: '.textarea'
+        cancel: '.textarea'
     }).resizable();
 
 
@@ -35,23 +35,23 @@ $(function() {
 
     // Event for command
     $('#console-dialog .commandbar input').keydown(function(e) {
-    	if (e.keyCode === 13) { // Key Enter
-    		e.preventDefault();
-    		CSConsole.execute($(this).val());
-    		if ($(this).val() !== '') {
-    			CSConsole.clipboard.add($(this).val());
-    		}
-    		$(this).val('');
-    		CSConsole.clipboard.resetCursor();
-    	} else if (e.keyCode === 38) { // Key Up
-    		$(this).val(CSConsole.clipboard.prev());
-    	} else if (e.keyCode === 40) { // Key Down
-    		$(this).val(CSConsole.clipboard.next());
-    	}
+        if (e.keyCode === 13) { // Key Enter
+            e.preventDefault();
+            $('#submit-button').click();
+        } else if (e.keyCode === 38) { // Key Up
+            $(this).val(CSConsole.clipboard.prev());
+        } else if (e.keyCode === 40) { // Key Down
+            $(this).val(CSConsole.clipboard.next());
+        }
     }).click(function() {
-    	$(this).focus();
+        $(this).focus();
     });
 
+    $('#submit-button').click(function() {
+        CSConsole.clipboard.resetCursor();
+        CSConsole.execute($('#console-dialog .commandbar input').val());
+        $('#console-dialog .commandbar input').val('');
+    });
     /**********************************
     PREPARE FOR DOMs
     **********************************/
@@ -65,4 +65,16 @@ $(function() {
     // Focus the command line
     $('#console-dialog .commandbar input').focus();
 
+    // Perform a sample command
+    var sampleCmd = "cat welcome.txt";
+    var i = 0;
+    var sampleTimer = setInterval(function() {
+        $('#console-dialog .commandbar input').val(sampleCmd.substring(0, i++));
+        if ($('#console-dialog .commandbar input').val() === sampleCmd) {
+        	clearTimeout(sampleTimer);
+        	setTimeout(function() {
+	    		$('#submit-button').click();
+        	}, 100);
+        }
+    }, 50);
 }); // End document ready

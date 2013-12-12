@@ -32,7 +32,6 @@ CSCmdFactory.execute = function(command, out) {
             CSCmdFactory.caller(CSCmdFactory._func[func], args);
         } else {
             out.printError('Unknown command: ' + func);
-            out.printError("Use 'help' for, you know, help.");
         }
     }
 };
@@ -72,7 +71,8 @@ CSCmdFactory._func.help = {
         }
     }
 };
-
+/*
+Test function
 CSCmdFactory._func.echo = {
     description: 'Print out the same input.',
     params: {
@@ -87,7 +87,7 @@ CSCmdFactory._func.echo = {
         }
     }
 };
-
+*/
 CSCmdFactory._func.clear = {
     description: 'Clear console screen',
     params: {
@@ -95,5 +95,41 @@ CSCmdFactory._func.clear = {
     exec: function(args) {
 	    var out = CSCmdFactory.config.outputStream;
 	    out.clearScreen();
+	    out.printInfo('>');
+    }
+};
+
+CSCmdFactory._func.cat = {
+    description: 'Display a file',
+    params: {
+    	filename: 'File name to read'
+    },
+    exec: function(args) {
+	    var out = CSCmdFactory.config.outputStream;
+	    if (typeof args.filename !== 'undefined') {
+		    CSDataAdapter.readfile(args.filename, function(data) {
+		    	if (data !== null) {
+		    		out.printInfo(data);
+		    	} else {
+		    		out.printError('File not found: ' + args.filename);
+		    	}
+		    });
+		} else {
+			out.printError("Please provide filename to read.");
+		}
+    }
+};
+
+CSCmdFactory._func.ls = {
+    description: 'List files',
+    params: {
+    },
+    exec: function(args) {
+	    var out = CSCmdFactory.config.outputStream;
+	    CSDataAdapter.listfile(function(data) {
+	    	if (data !== null) {
+	    		out.printInfo(data);
+	    	}
+	    });
     }
 };

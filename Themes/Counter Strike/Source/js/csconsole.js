@@ -10,19 +10,19 @@ CSConsole.config = {
     commandFactory: CSCmdFactory
 };
 
-CSConsole.clipboard =  new CSClipboard();
+CSConsole.clipboard = new CSClipboard();
 
 CSConsole.out = {
-	writeAll: function(string) {
-		if (typeof string === 'undefined') string = '';
-		var obj = $(CSConsole.config.consoleDOM);
-		obj.html(string);
-	},
+    writeAll: function(string) {
+        if (typeof string === 'undefined') string = '';
+        var obj = $(CSConsole.config.consoleDOM);
+        obj.html(string);
+    },
     write: function(string, style) {
-    	if (typeof string === 'undefined') string = '';
-    	if (typeof style === 'undefined') style = '';
+        if (typeof string === 'undefined') string = '';
+        if (typeof style === 'undefined') style = '';
 
-    	string = Helper.String.htmlentities(string);
+        string = Helper.String.htmlentities(string);
 
         var config = CSConsole.config;
         var obj = $(config.consoleDOM);
@@ -47,11 +47,14 @@ CSConsole.out = {
         CSConsole.out.writeln(mess, "color: #FFD771");
     },
     clearScreen: function() {
-    	CSConsole.out.writeAll();
+        CSConsole.out.writeAll();
     }
 };
 
 CSConsole.execute = function(command) {
-	CSConsole.out.printInfo("> " + command);
+    CSConsole.out.printInfo("> " + command);
+    if (command !== '') {
+        CSConsole.clipboard.add(command);
+    }
     CSConsole.config.commandFactory.execute(command, CSConsole.out);
 };

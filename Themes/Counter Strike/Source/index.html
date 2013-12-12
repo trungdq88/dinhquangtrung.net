@@ -8,9 +8,6 @@
         <link rel="stylesheet" type="text/css" href="css/csfont.css">
         <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <!--[if lt IE 10]>
-            <link rel="stylesheet" type="text/css" href="css/ie8.css">   
-        <![endif]-->
         <script type="text/javascript" src="js/lib/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="js/lib/jquery-ui.js"></script>
         <script type="text/javascript" src="js/lib/preloadjs-0.4.0.min.js"></script>
@@ -20,6 +17,7 @@
         <script type="text/javascript" src="js/helper.js"></script>
         <script type="text/javascript" src="js/csclipboard.js"></script>
         <script type="text/javascript" src="js/cmdfactory.js"></script>
+        <script type="text/javascript" src="js/csdataadapter.js"></script>
         <script type="text/javascript" src="js/csconsole.js"></script>
 
         <script type="text/javascript" src="js/main.js"></script>
@@ -52,12 +50,20 @@
         </div>
 
         <div id="console-dialog" style="width: 700px; height: 400px; right: 100px; top: 100px;" class="cs-dialog">
-    		<div onclick="$('#console-dialog').fadeOut();" class="closebutton"><img src="css/images/cs-close-button.png"/></div>
+    		<div onclick="$('#console-dialog').fadeOut();" class="closebutton"><img src="css/images/cs-close-button.png"/>
+            </div>
         	<div class="titlebar">
         		Console
         	</div>
 		  <div class="logwindow">
-		  	<pre><div class="textarea">============================================================================ 
+		  	<pre><div class="textarea"></div></pre>
+		  </div>
+		  <div class="commandbar">
+		  	<input type="text"/> <a id="submit-button" class="cs-button">Submit</a>
+		  </div>
+		</div>
+        <div id="data-string" style="display: none">
+            <div id="welcome-txt">============================================================================ 
 =..........................................................................= 
 =.......................... Welcome to my website .........................= 
 =.............. I'm not a big fan of CS, just love this theme .............= 
@@ -66,16 +72,15 @@
 ============================================================================ 
 
 
-Now: 2013-12-12 02:49:23
 Media by: Counter Strike 1.6 Source | This console: myself
-Version: 1.0.1
+CSConsole Version: 1.0.1
 Use 'help' for, you know, help.
 
-</div></pre>
-		  </div>
-		  <div class="commandbar">
-		  	<input type="text"/> <a class="cs-button">Submit</a>
-		  </div>
-		</div>
+</div>
+        <div id="about_me-txt">Hello, i.</div>
+        <div id="this_website_on_github-txt">Hello, i.</div>
+        <div id="about_me-txt">Hello, i.</div>
+        <div id="about_me-txt">Hello, i.</div>
+        <div id="about_me-txt">Hello, i.</div>
     </body>
 </html>
