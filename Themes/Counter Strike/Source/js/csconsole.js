@@ -7,7 +7,9 @@ var CSConsole = CSConsole || {};
 CSConsole.config = {
     consoleDOM: '#console-dialog .textarea',
     wrapper: 'span',
-    commandFactory: CSCmdFactory
+    commandFactory: CSCmdFactory,
+    // Always start and end with /
+    currDir: '/' 
 };
 
 CSConsole.clipboard = new CSClipboard();
@@ -48,13 +50,17 @@ CSConsole.out = {
     },
     clearScreen: function() {
         CSConsole.out.writeAll();
+    },
+    printCurrDir: function(command) {
+        if (typeof command === 'undefined') command = '';
+        CSConsole.out.printWarning(CSConsole.config.currDir + "> " + command);
     }
 };
 
 CSConsole.execute = function(command) {
-    CSConsole.out.printInfo("> " + command);
+    CSConsole.out.printCurrDir(command);
     if (command !== '') {
         CSConsole.clipboard.add(command);
     }
-    CSConsole.config.commandFactory.execute(command, CSConsole.out);
+    CSConsole.config.commandFactory.execute(command, CSConsole);
 };

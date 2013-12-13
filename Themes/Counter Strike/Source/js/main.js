@@ -39,19 +39,35 @@ $(function() {
             e.preventDefault();
             $('#submit-button').click();
         } else if (e.keyCode === 38) { // Key Up
-            $(this).val(CSConsole.clipboard.prev());
+            var result = CSConsole.clipboard.prev();
+            setTimeout(function() {
+                $('#console-dialog .commandbar input').val('');
+                $('#console-dialog .commandbar input').val(result);
+            }, 100);
         } else if (e.keyCode === 40) { // Key Down
-            $(this).val(CSConsole.clipboard.next());
+            setTimeout(function() {
+            var result = CSConsole.clipboard.next();
+                $('#console-dialog .commandbar input').val('');
+                $('#console-dialog .commandbar input').val(result);
+            }, 100);
         }
     }).click(function() {
         $(this).focus();
     });
 
+    // Event for Execute command button
     $('#submit-button').click(function() {
         CSConsole.clipboard.resetCursor();
         CSConsole.execute($('#console-dialog .commandbar input').val());
         $('#console-dialog .commandbar input').val('');
     });
+
+    // Default event for menus
+    $('.menupart a').click(function() {
+        CSConsole.out.printError('What a shame... This feature is not ready yet.');
+        CSConsole.out.printError('Wanna help? https://github.com/trungdq88/dinhquangtrung.net \n');
+    });
+
     /**********************************
     PREPARE FOR DOMs
     **********************************/

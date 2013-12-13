@@ -3,7 +3,7 @@ var CSCmdFactory = CSCmdFactory || {};
 
 
 CSCmdFactory.config = {
-    outputStream: null
+    CS: null
 }
 
 CSCmdFactory.caller = function(func, args) {
@@ -18,8 +18,8 @@ CSCmdFactory.caller = function(func, args) {
     func.exec(_args);
 }
 
-CSCmdFactory.execute = function(command, out) {
-    CSCmdFactory.config.outputStream = out;
+CSCmdFactory.execute = function(command, CSConsole) {
+    CSCmdFactory.config.CS = CSConsole;
     var tokens = command.trim().split(' ');
     if (command.length > 0) {
         // Get function name and arguments
@@ -31,12 +31,79 @@ CSCmdFactory.execute = function(command, out) {
             // Call function
             CSCmdFactory.caller(CSCmdFactory._func[func], args);
         } else {
-            out.printError('Unknown command: ' + func);
+            CSCmdFactory.config.CS.out.printError('Unknown command: ' + func);
         }
     }
 };
 
 CSCmdFactory._func = {};
+
+CSCmdFactory._func.cat = {
+    description: 'Display a file',
+    params: {
+        filename: 'File name to read'
+    },
+    exec: function(args) {
+        var CS = CSCmdFactory.config.CS;
+        if (typeof args.filename !== 'undefined') {
+            var filePath = Helper.Path.buildAbsolutePath(CS.config.currDir, args.filename);
+            if (CSDataAdapter.checkFile(filePath)) {
+                CSDataAdapter.readfile(filePath, function(data) {
+                    if (data !== null) {
+                        CS.out.printInfo(data);
+                    } else {
+                        CS.out.printError('File not found on server: ' + args.filename);
+                    }
+                });
+            } else {
+                CS.out.printError('File not found: ' + args.filename);
+            }
+
+        } else {
+            CS.out.printError("Please provide filename to read.");
+        }
+    }
+};
+
+CSCmdFactory._func.ls = {
+    description: 'List files',
+    params: {
+        dir: "Directory to list files"
+    },
+    exec: function(args) {
+        var CS = CSCmdFactory.config.CS;
+
+        if (typeof args.dir === 'undefined') args.dir = "";
+        var dirPath = Helper.Path.buildAbsolutePath(CS.config.currDir, args.dir);
+        CSDataAdapter.listfile(dirPath, function(data) {
+            if (data !== null) {
+                CS.out.printInfo(data);
+            }
+        });
+    }
+};
+
+CSCmdFactory._func.cd = {
+    description: 'Change directory',
+    params: {
+        dir: "Directory path"
+    },
+    exec: function(args) {
+        var CS = CSCmdFactory.config.CS;
+        if (typeof args.dir !== 'undefined') {
+            // Build absolute path from currDir and parameter.
+            var dest = Helper.Path.buildAbsolutePath(CS.config.currDir, args.dir);
+            console.log('dest=' + dest);
+            if (CSDataAdapter.checkDir(dest)) {
+                CS.config.currDir = dest.replace(/\/$/, '') + "/";
+                CS.out.printCurrDir();
+            } else {
+                CS.out.printError('Directory not found: ' + args.dir)
+            }
+
+        }
+    }
+};
 
 CSCmdFactory._func.help = {
     description: 'Show you how to use a command.',
@@ -44,92 +111,40 @@ CSCmdFactory._func.help = {
         cmd: 'Command you want to lookup',
     },
     exec: function(args) {
-        var out = CSCmdFactory.config.outputStream;
+        var CS = CSCmdFactory.config.CS;
         if (typeof args.cmd !== 'undefined') {
             var targetFunc = CSCmdFactory._func[args.cmd];
             if (typeof targetFunc === 'object') {
-                out.printSuccess(args.cmd + ': ' + targetFunc.description);
+                CS.out.printSuccess(args.cmd + ': ' + targetFunc.description);
 
                 if (Object.keys(targetFunc.params).length > 0) {
-	                out.printSuccess('Arguments: ');
-	                for (p in targetFunc.params) {
-	                    out.printSuccess('	' + p + ': ' + targetFunc.params[p])
-	                }
-	            } else {
-	            	out.printSuccess('(No arguments)');
-	            }
+                    CS.out.printSuccess('Arguments: ');
+                    for (p in targetFunc.params) {
+                        CS.out.printSuccess('   ' + p + ': ' + targetFunc.params[p])
+                    }
+                } else {
+                    CS.out.printSuccess('(No arguments)');
+                }
             } else {
-            	out.printError('Command not found: ' + args.cmd);
+                CS.out.printError('Command not found: ' + args.cmd);
             }
         } else {
             // Print default help
-            out.printSuccess("Available commands: ");
+            CS.out.printSuccess("Available commands: ");
 
             for (cmd in CSCmdFactory._func) {
-    			out.printSuccess("	" + cmd + ": " + CSCmdFactory._func[cmd].description);
+                CS.out.printSuccess("   " + cmd + ": " + CSCmdFactory._func[cmd].description);
             }
         }
     }
 };
-/*
-Test function
-CSCmdFactory._func.echo = {
-    description: 'Print out the same input.',
-    params: {
-        string: 'Input string for echo',
-    },
-    exec: function(args) {
-        var out = CSCmdFactory.config.outputStream;
-        if (typeof args.string !== 'undefined') {
-            out.printInfo(args.string);
-        } else {
-            out.printError("Please provide input string. Use 'help echo' for help.");
-        }
-    }
-};
-*/
+
 CSCmdFactory._func.clear = {
     description: 'Clear console screen',
-    params: {
-    },
+    params: {},
     exec: function(args) {
-	    var out = CSCmdFactory.config.outputStream;
-	    out.clearScreen();
-	    out.printInfo('>');
-    }
-};
-
-CSCmdFactory._func.cat = {
-    description: 'Display a file',
-    params: {
-    	filename: 'File name to read'
-    },
-    exec: function(args) {
-	    var out = CSCmdFactory.config.outputStream;
-	    if (typeof args.filename !== 'undefined') {
-		    CSDataAdapter.readfile(args.filename, function(data) {
-		    	if (data !== null) {
-		    		out.printInfo(data);
-		    	} else {
-		    		out.printError('File not found: ' + args.filename);
-		    	}
-		    });
-		} else {
-			out.printError("Please provide filename to read.");
-		}
-    }
-};
-
-CSCmdFactory._func.ls = {
-    description: 'List files',
-    params: {
-    },
-    exec: function(args) {
-	    var out = CSCmdFactory.config.outputStream;
-	    CSDataAdapter.listfile(function(data) {
-	    	if (data !== null) {
-	    		out.printInfo(data);
-	    	}
-	    });
+        var CS = CSCmdFactory.config.CS;
+        CS.out.clearScreen();
+        CS.out.printCurrDir();
     }
 };
