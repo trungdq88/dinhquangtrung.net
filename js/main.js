@@ -71,6 +71,8 @@ $(function() {
     /**********************************
     PREPARE FOR DOMs
     **********************************/
+    // Show loading text
+    CSConsole.out.printInfo('Loading...');
 
     // Preload sounds
     createjs.Sound.registerSound({
@@ -80,17 +82,19 @@ $(function() {
 
     // Focus the command line
     $('#console-dialog .commandbar input').focus();
+}); // End document ready
 
+$(window).load(function() {
     // Perform a sample command
     var sampleCmd = "cat welcome.txt";
     var i = 0;
     var sampleTimer = setInterval(function() {
         $('#console-dialog .commandbar input').val(sampleCmd.substring(0, i++));
         if ($('#console-dialog .commandbar input').val() === sampleCmd) {
-        	clearTimeout(sampleTimer);
-        	setTimeout(function() {
-	    		$('#submit-button').click();
-        	}, 100);
+            clearTimeout(sampleTimer);
+            setTimeout(function() {
+                $('#submit-button').click();
+            }, 100);
         }
     }, 50);
-}); // End document ready
+}); // End window load
