@@ -93,7 +93,6 @@ CSCmdFactory._func.cd = {
         if (typeof args.dir !== 'undefined') {
             // Build absolute path from currDir and parameter.
             var dest = Helper.Path.buildAbsolutePath(CS.config.currDir, args.dir);
-            console.log('dest=' + dest);
             if (CSDataAdapter.checkDir(dest)) {
                 CS.config.currDir = dest.replace(/\/$/, '') + "/";
                 CS.out.printCurrDir();
