@@ -17,11 +17,38 @@
         <script type="text/javascript" src="../js/lib/preloadjs-0.4.0.min.js"></script>
         <script type="text/javascript" src="../js/lib/soundjs-0.5.0.min.js"></script>
 
+        <script type="text/javascript" src="js/lib/easeljs-0.7.1.min.js"></script>
+        <script>
+            $(function() {
+
+                var canvas = document.getElementById('playcanvas');
+                var stage = new createjs.Stage(canvas);
+                var shape = new createjs.Shape();
+                shape.graphics.beginFill('#ccc').drawRoundRect(0, 0, 1000, 600, 0);
+                stage.addChild(shape);
+                stage.update();
+
+                var playerImg = new Image();
+                playerImg.src = "images/player.png";
+                playerImg.onload = function() {
+                    var playerBitmap = new createjs.Bitmap(playerImg);
+
+                    playerBitmap.x = 300;
+                    playerBitmap.y = 300;
+
+                    stage.addChild(playerBitmap);
+
+                    stage.update();
+                }
+                
+
+            });
+        </script>
     </head>
     <body>
         <div id="container">
             <div id="playcontainer">
-                <canvas width="600px" height="600px">
+                <canvas id="playcanvas" width="1000" height="600">
                     Your browser is not support Canvas.
                 </canvas>
             </div>
