@@ -18,99 +18,10 @@
         <script type="text/javascript" src="../js/lib/soundjs-0.5.0.min.js"></script>
 
         <script type="text/javascript" src="js/lib/easeljs-0.7.1.min.js"></script>
-        <script>
-            var playerBitmap;
-            var stage;
-            var speed = 10;
-            var moveObjectTimer;
-            var pressingKey = Array();
 
-            $(function() {
-
-                var canvas = document.getElementById('playcanvas');
-                stage = new createjs.Stage(canvas);
-                var shape = new createjs.Shape();
-                shape.graphics.beginFill('#ccc').drawRoundRect(0, 0, 1000, 600, 0);
-                stage.addChild(shape);
-                stage.update();
-
-                var playerImg = new Image();
-                playerImg.src = "images/player.png";
-                playerImg.onload = function() {
-                    playerBitmap = new createjs.Bitmap(playerImg);
-
-                    playerBitmap.x = 300;
-                    playerBitmap.y = 300;
-                    playerBitmap.regX = playerImg.width / 2;
-                    playerBitmap.regY = playerImg.height / 2;
-                    
-                    // arttan(deltaX / deltaY)
-
-                    stage.addChild(playerBitmap);
-
-                    stage.update();
-
-                    bindMouseMoveEvent();
-                    bindMovingEvent();
-                }
-                
-
-
-            });
-
-            function bindMouseMoveEvent() {
-                $(stage).on('stagemousemove', function(e) {
-                    //console.log(e.currentTarget.mouseX + " " + e.currentTarget.mouseY);
-
-                    playerBitmap.center = {
-                        x: playerBitmap.x + playerBitmap.regX,
-                        y: playerBitmap.y + playerBitmap.regY
-                    }
-                    
-                    deltaX = e.currentTarget.mouseX - playerBitmap.center.x;
-                    deltaY = - (e.currentTarget.mouseY - playerBitmap.center.y);
-
-                    rotDegree = Math.atan(deltaX / deltaY) * 180 / Math.PI;
-
-                    if (deltaY < 0) {
-                        rotDegree = 180 + rotDegree;
-                    }
-
-                    playerBitmap.rotation = rotDegree;
-                    stage.update();
-                });
-            }
-
-            function bindMovingEvent() {
-                $('body').on('keydown', function(e) {
-                    pressingKey[e.keyCode] = true;
-                }).on('keyup', function(e) {
-                    pressingKey[e.keyCode] = false;
-                });
-                moveObjectTimer = setInterval(function(){
-                    moveObject();
-                }, speed);
-            }
-
-            function moveObject() {
-                if (pressingKey[87]) { // Up
-                    playerBitmap.y -= 1;
-                    stage.update();
-                }
-                if (pressingKey[83]) { // Down
-                    playerBitmap.y += 1;
-                    stage.update();
-                }
-                if (pressingKey[65]) { // Left
-                    playerBitmap.x -= 1;
-                    stage.update();
-                }
-                if (pressingKey[68]) { // Right
-                    playerBitmap.x += 1;
-                    stage.update();
-                }
-            }
-        </script>
+        <script type="text/javascript" src="js/CSGame.js"></script>
+        <script type="text/javascript" src="js/CSPlayer.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
     </head>
     <body>
         <div id="container">
