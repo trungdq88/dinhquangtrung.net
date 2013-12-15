@@ -16,4 +16,8 @@ $(function() {
 	// Start events
 	CSGame.startMouseMoving();
 	CSGame.startKeyPressing();
+	CSGame.startMouseClick();
+
+	// Add a player
+	CSGame.addPlayer();
 });

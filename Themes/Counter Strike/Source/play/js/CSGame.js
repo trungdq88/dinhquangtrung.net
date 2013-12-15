@@ -29,12 +29,17 @@ CSGame.eventMouseMovingRegs = [];
 // Store all function that need to call when key pressing
 CSGame.eventKeyPressingRegs = [];
 
+// 
+CSGame.eventMouseClickRegs = [];
+
 // Store all key stage. true = pressing, false = released.
 CSGame.pressingKeys = [];
 
 // The clock to do the loop
 CSGame.theClock = {};
 
+// All players
+CSGame.players = [];
 
 CSGame.drawBase = function() {
 	var config = CSGame.config;
@@ -75,22 +80,34 @@ CSGame.startKeyPressing = function() {
     }, CSGame.config.delaySpeed);
 };
 
+CSGame.startMouseClick = function() {
+	$(CSGame.config.canvas).on('click.csgame', function(e) {
+		// offsetX, offsetY is what we need
+		for (reg in CSGame.eventMouseClickRegs) {
+	    	CSGame.eventMouseClickRegs[reg](e);
+	    }
+	});
+}
+
 CSGame.addPlayer = function(imagePath, defaultx, defaulty, registerEvents) {
 	if (imagePath === undefined) imagePath = CSGame.config.defaultImagePath;
 	if (defaultx === undefined) defaultx = 0;
 	if (defaulty === undefined) defaulty = 0;
 
-	var player1 = new CSPlayer(imagePath);
-	player1.config = {
+	var player = new CSPlayer(imagePath);
+	CSGame.players.push(player);
+
+	player.config = {
 		stage: CSGame.stage,
 		defaultX: defaultx,
 		defaultY: defaulty,
 	}
-	player1.load(function() {
-		CSGame.stage.addChild(player1.bitmap);
+	player.load(function() {
+		CSGame.stage.addChild(player.bitmap);
 		CSGame.stage.update();
 
-		CSGame.eventMouseMovingRegs.push(player1.regMouseMoving);
-		CSGame.eventKeyPressingRegs.push(player1.regPressingKey);
+		CSGame.eventMouseMovingRegs.push(player.regMouseMoving);
+		CSGame.eventKeyPressingRegs.push(player.regPressingKey);
+		CSGame.eventMouseClickRegs.push(player.regMouseClick)
 	});
 };

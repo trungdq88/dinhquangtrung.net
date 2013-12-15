@@ -80,6 +80,14 @@ var CSPlayer = function (imagePath) {
 	    myself.config.stage.update();
 	};
 
+	// For "shooting"
+	this.regMouseClick = function(e) {
+		deltaX = e.offsetX - myself.bitmap.x;
+	    deltaY = e.offsetY - myself.bitmap.y;
+	    var slope = deltaY / deltaX;
+	    (new CSBullet(myself.config.stage, {x: myself.bitmap.x, y: myself.bitmap.y}, slope, deltaX, 5)).go();
+	}
+
 	this.load = function(initDone) {
 		var img = new Image();
 		img.src = imagePath;
