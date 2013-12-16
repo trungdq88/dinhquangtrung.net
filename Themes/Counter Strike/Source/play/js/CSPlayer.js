@@ -1,26 +1,5 @@
 
 
-
-
-
-/*
-var player1 = new CSPlayer('images/player.png');
-player1.config = {
-	stage: CSGame.stage,
-	defaultX: 300,
-	defaultY: 300,
-}
-player1.load(function() {
-	CSGame.stage.addChild(player1.bitmap);
-	CSGame.stage.update();
-
-
-	CSGame.eventMouseMovingRegs.push(player1.regMouseMoving);
-	CSGame.eventKeyPressingRegs.push(player1.regPressingKey);
-});
-
-*/
-
 var CSPlayer = function (imagePath) {
 	var myself = this;
 
@@ -28,6 +7,12 @@ var CSPlayer = function (imagePath) {
 		stage: null,
 		defaultX: 300,
 		defaultY: 300,
+		fireButton: 1,
+	}
+
+	this.fireDelay = {
+		ticker: 0,
+		delayDistance: 10,
 	}
 
 	this.store = {
@@ -62,7 +47,7 @@ var CSPlayer = function (imagePath) {
 
 	// For rotating the "head"
 	this.regMouseMoving = function(e) {
-		if (e === undefined) {
+		if (e === undefined || e.currentTarget === undefined) {
 			e = {
 				currentTarget: {
 					mouseX: myself.store.lastMousePos.x,
@@ -77,15 +62,21 @@ var CSPlayer = function (imagePath) {
 	    var rotDegree = Math.atan(- deltaX / deltaY) * 180 / Math.PI + 180 * (deltaY >= 0);
 
 	    myself.bitmap.rotation = rotDegree;
-	    myself.config.stage.update();
+	    // myself.config.stage.update();
 	};
 
 	// For "shooting"
-	this.regMouseClick = function(e) {
-		deltaX = e.offsetX - myself.bitmap.x;
-	    deltaY = e.offsetY - myself.bitmap.y;
-	    var slope = deltaY / deltaX;
-	    (new CSBullet(myself.config.stage, {x: myself.bitmap.x, y: myself.bitmap.y}, slope, deltaX, 10)).go();
+	this.regMouseClick = function(pressingButtons) {
+		//console.log(myself.config.fireButton);
+		if (pressingButtons[myself.config.fireButton] !== undefined
+		 && myself.fireDelay.ticker++ > myself.fireDelay.delayDistance) {
+			myself.fireDelay.ticker = 0;
+
+			deltaX = myself.store.lastMousePos.x - myself.bitmap.x;
+		    deltaY = myself.store.lastMousePos.y - myself.bitmap.y;
+		    var slope = deltaY / deltaX;
+		    (new CSBullet(myself.config.stage, {x: myself.bitmap.x, y: myself.bitmap.y}, slope, deltaX, 5)).go();
+	    }
 	}
 
 	this.load = function(initDone) {
