@@ -85,7 +85,7 @@ var CSPlayer = function (imagePath) {
 		deltaX = e.offsetX - myself.bitmap.x;
 	    deltaY = e.offsetY - myself.bitmap.y;
 	    var slope = deltaY / deltaX;
-	    (new CSBullet(myself.config.stage, {x: myself.bitmap.x, y: myself.bitmap.y}, slope, deltaX, 5)).go();
+	    (new CSBullet(myself.config.stage, {x: myself.bitmap.x, y: myself.bitmap.y}, slope, deltaX, 10)).go();
 	}
 
 	this.load = function(initDone) {
