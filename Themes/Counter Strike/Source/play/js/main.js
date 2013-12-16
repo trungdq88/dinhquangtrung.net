@@ -14,10 +14,13 @@ $(function() {
 	CSGame.initStage();
 
 	// Start events
-	CSGame.startMouseMoving();
-	CSGame.startKeyPressing();
-	CSGame.startMouseClick();
+	CSGame.listenMousePressing();
+	CSGame.listenKeyPressing();
+	CSGame.listenMouseMoving();
+	CSGame.initIntervalEvents();
+	CSGame.startClock();
 
 	// Add a player
 	CSGame.addPlayer();
+
 });

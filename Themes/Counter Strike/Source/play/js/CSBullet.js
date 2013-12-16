@@ -21,9 +21,9 @@ var CSBullet = function(inputStage, inputStart, inputSlope, inputAnchor, inputSp
 		slope: (inputSlope === undefined ? null : inputSlope),
 		anchor: (inputAnchor === undefined ? 1 : inputAnchor),
 		speed: (inputSpeed === undefined ? 1 : inputSpeed),
-		step: 1,
+		step: 8,
 		start: (inputStart === undefined ? {x: 0, y: 0} : inputStart),
-		lifetime: 3000
+		lifetime: 3000,
 	};
 
 	this.timer = {};
@@ -39,24 +39,13 @@ var CSBullet = function(inputStage, inputStart, inputSlope, inputAnchor, inputSp
 		myself.timer = setInterval(function() {
 			myself.circle.x += myself.config.step * Math.cos(Math.atan(myself.config.slope)) * (2 * (myself.config.anchor >= 0) - 1);
 			myself.circle.y += myself.config.step * Math.sin(Math.atan(myself.config.slope)) * (2 * (myself.config.anchor >= 0) - 1);
-			myself.config.stage.update();
-			if (myself.circle.x < 0 || myself.circle.y < 0
-				|| myself.circle.x > myself.config.stage.canvas.width
-				|| myself.circle.y > myself.config.stage.canvas.height) {
-				myself.destroy();
-			}
-
+			// myself.config.stage.update();
 		}, myself.config.speed);
 
-		// setTimeout(function() {
-		// 	myself.destroy();
-		// }, myself.config.lifetime);
-
-		
+		setTimeout(function() {
+			clearInterval(myself.timer);
+			CSGame.stage.removeChild(myself.circle);
+		}, myself.config.lifetime);
 	}
 
-	this.destroy = function() {
-		clearInterval(myself.timer);
-		myself.config.stage.removeChild(myself.circle);
-	}
 }
