@@ -112,7 +112,6 @@ CSGame.startMouseMoving = function(){
 
 // This function will need to modify during development
 CSGame.initIntervalEvents = function(){
-	console.log('Init interval events');
 	CSGame.intervalEvents.push(CSGame.startMouseMoving);
 	CSGame.intervalEvents.push(CSGame.startMousePressing);
 	CSGame.intervalEvents.push(CSGame.startKeyPressing);
