@@ -11,7 +11,7 @@
 
 
 
-var CSBullet = function(inputStage, inputStart, inputSlope, inputAnchor, inputSpeed, inputSize, inputColor) {
+var CSBullet = function(inputStage,inputStart, inputSlope, inputAnchor, inputSpeed, inputSize, inputColor) {
 	var myself = this;
 
 	this.config = {

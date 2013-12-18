@@ -23,6 +23,8 @@ CSGame.stage = {};
 // All moving object available in stage: players, bullets, grenades, smokes...
 CSGame.objects = [];
 
+CSGame.map = {};
+
 // Store all function that need to call when mouse moving
 CSGame.eventMouseMovingRegs = [];
 
@@ -140,7 +142,6 @@ CSGame.addPlayer = function(imagePath, defaultx, defaulty, registerEvents) {
 	CSGame.players.push(player);
 
 	player.config = {
-		stage: CSGame.stage,
 		defaultX: defaultx,
 		defaultY: defaulty,
 		fireButton: 1
