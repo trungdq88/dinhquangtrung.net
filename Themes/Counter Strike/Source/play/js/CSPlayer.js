@@ -4,11 +4,22 @@ var CSPlayer = function (imagePath) {
 	var myself = this;
 
 	this.config = {
-		stage: null,
 		defaultX: 300,
 		defaultY: 300,
 		fireButton: 1,
 	}
+
+	this.fireButton: 1,
+
+	this.money = 0;
+
+	this.health = 100,
+
+	this.equipment = {
+		backpack: {},
+	 	weapon: {},
+	  	armor: {} 
+	};
 
 	this.fireDelay = {
 		ticker: 0,
@@ -16,6 +27,7 @@ var CSPlayer = function (imagePath) {
 	}
 
 	this.store = {
+		// Curent mouse's position
 		lastMousePos: {
 			x: 0,
 			y: 0
@@ -62,20 +74,19 @@ var CSPlayer = function (imagePath) {
 	    var rotDegree = Math.atan(- deltaX / deltaY) * 180 / Math.PI + 180 * (deltaY >= 0);
 
 	    myself.bitmap.rotation = rotDegree;
-	    // myself.config.stage.update();
 	};
 
 	// For "shooting"
 	this.regMouseClick = function(pressingButtons) {
 		//console.log(myself.config.fireButton);
-		if (pressingButtons[myself.config.fireButton] !== undefined
+		if (pressingButtons[myself.fireButton] !== undefined
 		 && myself.fireDelay.ticker++ > myself.fireDelay.delayDistance) {
 			myself.fireDelay.ticker = 0;
 
 			deltaX = myself.store.lastMousePos.x - myself.bitmap.x;
 		    deltaY = myself.store.lastMousePos.y - myself.bitmap.y;
 		    var slope = deltaY / deltaX;
-		    (new CSBullet(myself.config.stage, {x: myself.bitmap.x, y: myself.bitmap.y}, slope, deltaX, 5)).go();
+		    // (new CSBullet("Missing stage here",{x: myself.bitmap.x, y: myself.bitmap.y}, slope, deltaX, 5)).go();
 	    }
 	}
 
