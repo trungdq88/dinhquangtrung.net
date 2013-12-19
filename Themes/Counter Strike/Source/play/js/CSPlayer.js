@@ -3,14 +3,6 @@
 var CSPlayer = function (imagePath) {
 	var myself = this;
 
-	this.config = {
-		defaultX: 300,
-		defaultY: 300,
-		fireButton: 1,
-	}
-
-	this.fireButton: 1,
-
 	this.money = 0;
 
 	this.health = 100,
@@ -33,8 +25,6 @@ var CSPlayer = function (imagePath) {
 			y: 0
 		}
 	}
-
-	this.bitmap = {};
 
 	// For moving
 	this.regPressingKey = function(pressingKey) {
@@ -78,8 +68,7 @@ var CSPlayer = function (imagePath) {
 
 	// For "shooting"
 	this.regMouseClick = function(pressingButtons) {
-		//console.log(myself.config.fireButton);
-		if (pressingButtons[myself.fireButton] !== undefined
+		if (pressingButtons[CSGameConfig.fireButton] !== undefined
 		 && myself.fireDelay.ticker++ > myself.fireDelay.delayDistance) {
 			myself.fireDelay.ticker = 0;
 
@@ -96,8 +85,8 @@ var CSPlayer = function (imagePath) {
 		img.onload = function() {
 		    myself.bitmap = new createjs.Bitmap(img);
 
-		    myself.bitmap.x = myself.config.defaultX;
-		    myself.bitmap.y = myself.config.defaultY;
+		    myself.bitmap.x = 0;
+		    myself.bitmap.y = 0;
 		    myself.bitmap.regX = img.width / 2;
 		    myself.bitmap.regY = img.height / 2;
 
@@ -105,3 +94,5 @@ var CSPlayer = function (imagePath) {
 		}
 	}
 }
+
+CSPlayer.prototype = new CSThing();

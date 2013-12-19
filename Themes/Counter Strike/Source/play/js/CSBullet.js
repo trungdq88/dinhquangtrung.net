@@ -9,7 +9,7 @@
 
 
 
-
+/*
 
 var CSBullet = function(inputStage,inputStart, inputSlope, inputAnchor, inputSpeed, inputSize, inputColor) {
 	var myself = this;
@@ -54,3 +54,5 @@ var CSBullet = function(inputStage,inputStart, inputSlope, inputAnchor, inputSpe
 		myself.config.stage.removeChild(myself.circle);
     }
 }
+
+*/
