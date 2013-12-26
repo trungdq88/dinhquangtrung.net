@@ -1,0 +1,235 @@
+*, *:before, *:after {
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    /* Firefox */
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+.textarea:focus {
+    outline: 0;
+}
+.textarea {
+    border: 0;
+    resize: none;
+}
+button:focus {
+    outline: 0;
+}
+input:focus {
+    outline: 0;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'SegoeUIRegular';
+    font-size: 12px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    cursor: default !important;
+}
+body {
+    background-color: black;
+}
+
+screen {
+    display: block;
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+}
+
+taskbar {
+    display: block;
+    position: absolute;
+    z-index: 200;
+    width: 100%;
+    background-color: rgba(27, 79, 121, 0.81);
+    bottom: 0;
+    height: 30px;
+    border-top: 1px solid rgba(18, 53, 79, 0.75);
+    box-shadow: 0 1px 0 #80b5dd inset;
+}
+areopeak:hover {
+    box-shadow: 2px 4px 4px 6px rgba(255, 255, 255, 0.21) inset;
+}
+areopeak {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 30px;
+    width: 15px;
+    /*
+    background-color: rgba(38, 106, 160, 0.81);
+    border: 1px solid rgba(22, 52, 87, 0.75);
+    box-shadow: 0 0px 0 1px rgba(128, 181, 221, 0.43) inset, 2px 3px 8px 2px rgba(255, 255, 255, 0.56) inset;
+    */
+    background-image: url('images/areopeak.png');
+    background-repeat: no-repeat;
+}
+
+startmenu {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    height: 41px;
+    width: 52px;
+    background: url('images/startmenu.png');
+}
+startmenu img{
+    opacity: 0;
+    transition: opacity 0.7s;
+    -webkit-transition: opacity 0.7s;
+    -moz-transition: opacity 0.7s;
+    -ms-transition: opacity 0.7s;
+    -o-transition: opacity 0.7s;
+}
+startmenu:hover img{
+    opacity: 1;
+}
+
+desktop {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image: url('images/wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+icon {
+    padding: 5px;
+    border-radius: 4px;
+}
+
+icon>.picture {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+}
+icon>.picture>img {
+    width: 100%;
+    height: 100%;
+}
+icon>.name {
+    margin-top: 3px;
+    width: 72px;
+    color: rgb(247, 247, 247);
+    text-align: center;
+    text-shadow: 2px 2px 3px #000;
+}
+
+icon:hover {
+    box-shadow: 0 0 0 2px rgba(200, 224, 255, 0.71) inset;
+    background-color: rgba(197, 222, 255, 0.3);
+}
+
+icon.focus {
+    box-shadow: 0 0 0 2px rgba(200, 224, 255, 0.71) inset;
+    background-color: rgba(197, 222, 255, 0.77);
+}
+
+
+icon#recycle_bin {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+startmenupanel.focus {
+    display: block;
+}
+startmenupanel {
+    position: absolute;
+    display: none;
+    bottom: 29px;
+    left: 0px;
+    width: 400px;
+    height: 500px;
+    background-color: rgba(44, 68, 83, 0.81);
+    border: 1px solid rgba(0, 0, 0, 0.49);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22) inset;
+
+    -moz-border-radius-topleft: 6px;
+    -webkit-border-top-left-radius: 6px;
+     border-top-left-radius: 6px;
+    -moz-border-radius-topright: 6px;
+    -webkit-border-top-right-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+startmenupanel #shortcuts hr {
+    margin: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    border-top: 1px solid rgba(0, 0, 0, 0.18);
+    border-left: 0;
+    border-right: 0;
+}
+startmenupanel #shortcuts h1:hover {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.49) inset, 0 0 0 1px rgba(0, 0, 0, 0.74), 0 0 0 2px rgba(255, 255, 255, 0.13), 0 20px 0 -5px rgba(255, 255, 255, 0.22) inset, 0 10px 60px -20px white inset;
+}
+startmenupanel #shortcuts h1 {
+    color: rgb(247, 247, 247);
+    font-size: 12px;
+    font-weight: normal;
+    margin: 6px 0;
+    padding: 6px 2px 8px 6px;
+    border-radius: 4px;
+}
+
+startmenupanel #avatar img {
+    width: 100%;
+    height: 100%;
+}
+startmenupanel #avatar .mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url('images/avatar_mask.png');
+    background-repeat: no-repeat;
+}
+startmenupanel #avatar {
+    cursor: pointer;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    right: 45px;
+    top: -20px;
+    box-shadow: 0 0 0 1px #7b7877,0 0 0 2px rgba(255, 255, 255, 0.33), 0 0 0 5px rgba(116, 216, 233, 0.6), 0px 1px 5px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 1px;
+}
+startmenupanel #powerbutton {
+    position: absolute;
+    width: 100px;
+    bottom: 20px;
+    right: 28px;
+}
+startmenupanel #shortcuts {
+    position: absolute;
+    right: 9px;
+    top: 40px;
+    bottom: 9px;
+    width: 120px;
+}
+
+startmenupanel #recent_program {
+    position: absolute;
+    left: 9px;
+    bottom: 9px;
+    top: 9px;
+    width: 250px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.27),0 0 0 2px rgba(255, 255, 255, 0.34);
+}

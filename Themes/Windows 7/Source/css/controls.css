@@ -1,0 +1,20 @@
+.glass-button {
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.49) inset, 0 0 0 1px rgba(0, 0, 0, 0.47), 0 16px 0 -5px rgba(255, 255, 255, 0.12) inset, 0 26px 15px -20px rgba(255, 255, 255, 0.5) inset;
+	padding: 1px 8px;
+	border-radius: 2px;
+    height: 20px;
+    display: inline-block;
+	margin-left: 1px;
+    color: rgba(247,247,247,1);
+}
+.glass-button:hover {
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.49) inset, 0 0 0 1px rgba(0, 0, 0, 0.47), 0 16px 0 -5px rgba(255, 255, 255, 0.12) inset, 0 26px 15px -20px rgba(255, 255, 255, 0.5) inset, 0 0 4px 1px white inset;
+}
+
+.glass-button:active {
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0) inset, 0 0 0 1px rgba(0, 0, 0, 0.29), 0 16px 0 -5px rgba(255, 255, 255, 0.12) inset, 0 26px 15px -20px rgba(255, 255, 255, 0.38) inset;
+}
+.glass-button img{
+	margin: 0;
+	padding: 0;
+}
