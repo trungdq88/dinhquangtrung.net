@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome!</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="icon" type="image/png" href="css/images/favicon.ico">
+
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="css/font/segoeui.css">
+        <link rel="stylesheet" type="text/css" href="css/controls.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+
+        <script type="text/javascript" src="js/lib/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/lib/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/lib/preloadjs-0.4.0.min.js"></script>
+        <script type="text/javascript" src="js/lib/soundjs-0.5.0.min.js"></script>
+
+        <script type="text/javascript" src="../shared/js/dqt.js"></script>
+        <script type="text/javascript" src="js/windows.js"></script>
+        <script type="text/javascript" src="js/appmanager.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </head>
+    <body>
+        <bootscreen>
+            <div class="center">
+                <p>Starting Windows</p>
+                <p class="credit">&copy; dinhquangtrung.net</p>
+            </div>
+        </bootscreen>
+        <screen>
+            <desktop>
+                <icon class="shortcut" id="recycle_bin">
+                    <div class="picture">
+                        <img src="images/icons/recycle_bin.png">
+                    </div>
+                    <div class="name">
+                        <span>Recycle Bin</span>
+                    </div>
+                </icon>
+            </desktop>
+        	<taskbar>
+                <startmenupanel>
+                    <div id="recent_program">
+                        <div class="recent_program_item" appname="cstrike">
+                            <div class="icon">
+                                <img src="images/icons/cstrike.png" />
+                            </div>
+                            <div class="program_name">
+                                <span>Counter Strike 1.6</span>
+                            </div>
+                        </div>
+
+                        <div class="recent_program_item" appname="learnj">
+                            <div class="icon">
+                                <img src="images/icons/learnj.png" />
+                            </div>
+                            <div class="program_name">
+                                <span>Learn Japanese</span>
+                            </div>
+                        </div>
+                        <div class="recent_program_item" appname="github">
+                            <div class="icon">
+                                <img src="images/icons/github.png" />
+                            </div>
+                            <div class="program_name">
+                                <span>Fork me on GitHub</span>
+                            </div>
+                        </div>
+
+                        <div class="recent_program_item">
+                            <div class="icon">
+                                <img src="images/icons/netbeans.png" />
+                            </div>
+                            <div class="program_name">
+                                <span>Netbeans 6.9.1</span>
+                            </div>
+                        </div>
+                        <div class="recent_program_item">
+                            <div class="icon">
+                                <img src="images/icons/chrome.png"/>
+                            </div>
+                            <div class="program_name">
+                                <span>Google Chrome</span>
+                            </div>
+                        </div>
+                        <div class="recent_program_item">
+                            <div class="icon">
+                                <img src="images/icons/paint.png" />
+                            </div>
+                            <div class="program_name">
+                                <span>Paint</span>
+                            </div>
+                        </div>
+                        <div class="recent_program_item">
+                            <div class="icon">
+                                <img src="images/icons/war3.png" />
+                            </div>
+                            <div class="program_name">
+                                <span>World of Warcraft</span>
+                            </div>
+                        </div>
+                        <div class="recent_program_item">
+                            <div class="icon">
+                                <img src="images/icons/photoshop.png" />
+                            </div>
+                            <div class="program_name">
+                                <span>Photoshop CS6</span>
+                            </div>
+                        </div>
+                        <div id="bottom_bar">
+                            <hr class="blue_line sidepadding"/>
+                            <div id="all_programs">
+                                <img src="css/images/right_arrow.png" /> <span>All Programs</span>
+                            </div>
+                            <div id="search_box">
+                                <input type="text" placeholder="Search program and files" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="shortcuts">
+                        <h1>Đinh Quang Trung</h1>
+                        <h1>Documents</h1>
+                        <h1>Pictures</h1>
+                        <h1>Music</h1>
+                        <hr/>
+                        <h1>Games</h1>
+                        <h1>Computer</h1>
+                        <hr/>
+                        <h1>Control Panel</h1>
+                        <h1>Devices and Printers</h1>
+                        <h1>Default Programs</h1>
+                        <h1>Help and Support</h1>
+                    </div>
+                    <div id="avatar">
+                        <div class="mask"></div>
+                        <img src="images/TrungDQ_150x150.jpg"/>
+                    </div>
+                    <div id="powerbutton">
+                        <span class="glass-button">Shut down</span>
+                        <span style="padding: 1px 6px; margin-left: -2px" class="glass-button"><img src="css/images/small_arrow.png"/></span>
+                    </div>
+                </startmenupanel>
+                <startmenu>
+                    <img src="css/images/startmenu_hover.png"/>
+                </startmenu>
+                <areopeak></areopeak>
+            </taskbar>
+        </screen>
+    </body>
+</html>

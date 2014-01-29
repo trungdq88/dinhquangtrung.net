@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome!</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="icon" type="image/png" href="css/images/icon.ico">
+
+        <link rel="stylesheet" type="text/css" href="css/csfont.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="js/lib/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/lib/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/lib/preloadjs-0.4.0.min.js"></script>
+        <script type="text/javascript" src="js/lib/soundjs-0.5.0.min.js"></script>
+
+        
+        <script type="text/javascript" src="../../shared/js/dqt.js"></script>
+        <script type="text/javascript" src="js/helper.js"></script>
+        <script type="text/javascript" src="js/csclipboard.js"></script>
+        <script type="text/javascript" src="js/cmdfactory.js"></script>
+        <script type="text/javascript" src="js/csdataadapter.js"></script>
+        <script type="text/javascript" src="js/csconsole.js"></script>
+
+        <script type="text/javascript" src="js/main.js"></script>
+    </head>
+    <body>
+        <div id="container">
+        	<h2 class="cs-title">counter-strike</h2>
+        	<div id="sidemenu">
+        		<div class="menupart">
+        			<ul>
+        				<li><a >Setti CSS Server</a></li>
+        				<li><a >Setti CSS Server (Pub #2)</a></li>
+        				<li><a >Setti CSS Server (Pub #3)</a></li>
+        				<li><a >Setti CSS Server (Pub #4)</a></li>
+        			</ul>
+        		</div>
+        		<div class="menupart">
+        			<ul>
+        				<li><a >FIND SERVERS</a></li>
+        				<li><a >CREATE SERVER</a></li>
+        				<li><a >ARCHIVEMENTS</a></li>
+        				<li><a >REPORT BUG</a></li>
+        				<li><a >VIDEO STRESS TEST</a></li>
+        				<li><a onclick="$('#console-dialog').fadeIn()">CONSOLE</a></li>
+        				<li><a onclick="window.location.href='../../'">QUIT</a></li>
+        			</ul>
+        		</div>
+        		<div class="menupart"></div>
+        	</div>
+        </div>
+
+        <div id="console-dialog" style="width: 700px; height: 400px; right: 100px; top: 100px;" class="cs-dialog">
+    		<div onclick="$('#console-dialog').fadeOut();" class="closebutton"><img src="css/images/cs-close-button.png"/>
+            </div>
+        	<div class="titlebar">
+        		Console
+        	</div>
+		  <div class="logwindow">
+		  	<pre><div class="textarea"></div></pre>
+		  </div>
+		  <div class="commandbar">
+		  	<input type="text"/> <a id="submit-button" class="cs-button">Submit</a>
+		  </div>
+		</div>
+        <div id="data-string" style="display: none">
+            <dir name="root">
+                <dir name="about_me">
+                    <dir name="test">
+                        <file name="justtest-txt"></file>
+                    </dir>
+                    <file name="who_am_i-txt"></file>
+                    <file name="what_i_love-txt"></file>
+                    <file name="things_im_good_at-txt"></file>
+                    <file name="stuff_i_made-txt"></file>
+                    <file name="my_activity-txt"></file>
+                </dir>
+                <dir name="my_notes"></dir>
+                <dir name="books_i_read"></dir>
+                <dir name="software"></dir>
+                
+                <file name="welcome-txt"></file>
+                <file name="this_website_on_github-txt">
+                </file>
+            </dir>
+    </body>
+</html>
