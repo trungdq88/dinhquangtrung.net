@@ -15,6 +15,11 @@ AppManager.Apps = {
 		name: 'GitHub',
 		type: 'Link',
 		url: 'https://github.com/trungdq88/dinhquangtrung.net'
+	},
+	'wordpress': {
+		name: 'My blog',
+		type: 'FullScreenApp',
+		url: '/blog'
 	}
 }
 
