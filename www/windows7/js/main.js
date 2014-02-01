@@ -13,6 +13,7 @@ $(function() {
     Windows.Screen = $('body>screen');
     Windows.StartMenu = Windows.Screen.find('startmenu');
     Windows.StartMenuPanel.setDOM(Windows.Screen.find('startmenupanel'));
+    Windows.AllWindows = $('window');
 
     /**********************************
     BIND EVENTS
@@ -28,8 +29,8 @@ $(function() {
     /** Icon draggable **/
     Windows.Screen.find('icon').draggable();
 
-    /** Windows draggable **/
-    $('window').draggable({ handle: "titlebar" }).resizable({ handles: 'n, e, s, w, ne, se, sw, nw'});
+    /** Windows draggable & resizeable **/
+    Windows.setWindowsMoveable(Windows.AllWindows, true);
 
     /** Icon mouse events **/
     Windows.Screen.on('mousedown', 'icon', function(e) {
@@ -44,7 +45,7 @@ $(function() {
     });
 
     /** Desktop mouse events **/
-    Windows.Screen.on('mousedown', 'desktop', function(e){
+    Windows.Screen.on('mousedown', 'desktop', function(e) {
         // No include icon click.
         if (e.target !== this) return;
 
@@ -57,6 +58,40 @@ $(function() {
         }
     });
 
+    /** Set focus for windows **/
+    Windows.Screen.on('mousedown', 'window', function(e) {
+        if (e.button == Windows.MOUSE_LEFT_BUTTON) {
+            Windows.setFocusTo($(this));
+        }
+    })
+
+    Windows.Screen.on('mouseup', 'window', function(e) {
+        if (e.button == Windows.MOUSE_LEFT_BUTTON) {
+            if ($(e.target).hasClass('close')) {
+                $(this).fadeOut(200);
+            } else if ($(e.target).hasClass('max')) {
+                if ($(this).hasClass('max')) {
+                    Windows.setWindowsSize($(this), 'normal');
+                } else {
+                    Windows.setWindowsSize($(this), 'max');
+                }
+            }
+
+        } else if (e.button == Windows.MOUSE_MIDDLE_BUTTON) {
+            // Show context menu
+        }
+    });
+
+    Windows.Screen.on('dblclick', 'window', function(e) {
+        if ($(e.target).is('titlebar') || $(e.target).hasClass("window_title")) {
+            if ($(this).hasClass('max')) {
+                Windows.setWindowsSize($(this), 'normal');
+            } else {
+                Windows.setWindowsSize($(this), 'max');
+            } 
+        }
+    });
+
     /** Trigger start menu **/ 
     Windows.StartMenu.click(function(e) {
         if (Windows.StartMenuPanel.isOpen()) {
@@ -65,6 +100,7 @@ $(function() {
             Windows.setFocusTo(Windows.StartMenuPanel.getDOM());
         }
     });
+
 
     /** Start menu recent app launch **/
     $('.recent_program_item').click(function() {

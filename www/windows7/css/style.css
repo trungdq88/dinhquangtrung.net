@@ -1,5 +1,6 @@
 /** jQuery UI Fix **/
 .ui-icon-gripsmall-diagonal-se { background-image: url(""); }
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled { opacity: 1;}
 
 *, *:before, *:after {
     box-sizing:border-box;
@@ -264,13 +265,27 @@ startmenupanel #recent_program {
 window {
     width: 500px;
     height: 500px;
-    background-color: rgba(149, 189, 224, 0.85);
+    background-color: rgba(149, 189, 224, 0.52);
     position: absolute !important;
     left: 50px;
     top: 50px;
     z-index: 150;
     border-radius: 5px;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6) inset, 0 0 10px black;
+}
+
+window.max {
+    left: 0 !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 30px !important;
+    height: auto !important;
+    width: auto !important;
+    border-radius: 0 !important;
+}
+window.focus {
+    background-color: rgba(149, 189, 224, 0.85);
+    z-index: 151;
 }
 window titlebar {
     height: 25px;
@@ -279,7 +294,7 @@ window titlebar {
     top: 0;
     white-space: nowrap;
     overflow: hidden;
-    padding: 0 0 5px 15px;
+    padding: 0 0 0 7px;
     right: 7px;
     text-shadow: 0 0 6px white,0 0 3px white,0 0 6px rgba(255, 255, 255, 0.43);
 }
@@ -292,6 +307,17 @@ window content {
     bottom: 7px;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.56) inset, 0 0 0 1px rgba(255, 255, 255, 0.57);
     border-radius: 2px;
+}
+window.max content {
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+}
+window titlebar img {
+    width: 16px;
+    height: 16px;
+    margin: 0 4px 4px 6px;
+    vertical-align: middle;
 }
 window titlebar .window_title {
     padding-top: 5px;
@@ -306,6 +332,9 @@ window titlebar .window_controls {
     position: absolute;
     right: 0;
 }
+window.focus titlebar .window_controls span.control {
+    box-shadow: 0 14px 0 -5px rgba(255, 255, 255, 0.5) inset, 0 0 0 1px rgb(95, 95, 95), 0 0 0 1px rgba(255, 255, 255, 0.5) inset,0 0 30px -4px rgba(0, 0, 0, 0.78) inset, 0 -8px 10px -5px white inset;
+}
 window titlebar .window_controls span.control {
     box-shadow: 0 0 0 1px rgb(95, 95, 95), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
     margin-right: 1px;
@@ -316,6 +345,21 @@ window titlebar .window_controls span.control {
 }
 window titlebar .window_controls span.control.close {
     width: 42px;
+}
+window.focus titlebar .window_controls span.control.close {
+    background-color: #c0402e;
+}
+window titlebar .window_controls span.control:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+window.focus titlebar .window_controls span.control:active {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+window titlebar .window_controls span.control.close:hover {
+    background-color: #FF1F00;
+}
+window.focus titlebar .window_controls span.control.close:active {
+    background-color: #8F1200;
 }
 window titlebar .window_controls span.control.min {
     -webkit-border-bottom-left-radius: 4px;
