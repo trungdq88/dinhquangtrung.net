@@ -1,4 +1,4 @@
 dinhquangtrung.net
 ==================
 
-My website
+An "Online Windows" that you can use everywhere!
