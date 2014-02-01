@@ -1,3 +1,6 @@
+/** jQuery UI Fix **/
+.ui-icon-gripsmall-diagonal-se { background-image: url(""); }
+
 *, *:before, *:after {
     box-sizing:border-box;
     -moz-box-sizing:border-box;
@@ -59,6 +62,7 @@ screen {
     position: relative;
     height: 100%;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 taskbar {
@@ -255,6 +259,92 @@ startmenupanel #recent_program {
     background-color: white;
     border-radius: 4px;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.27),0 0 0 2px rgba(255, 255, 255, 0.34);
+}
+
+window {
+    width: 500px;
+    height: 500px;
+    background-color: rgba(149, 189, 224, 0.85);
+    position: absolute !important;
+    left: 50px;
+    top: 50px;
+    z-index: 150;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6) inset, 0 0 10px black;
+}
+window titlebar {
+    height: 25px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 0 5px 15px;
+    right: 7px;
+    text-shadow: 0 0 6px white,0 0 3px white,0 0 6px rgba(255, 255, 255, 0.43);
+}
+window content {
+    background: white;
+    position: absolute;
+    top: 27px;
+    left: 7px;
+    right: 7px;
+    bottom: 7px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.56) inset, 0 0 0 1px rgba(255, 255, 255, 0.57);
+    border-radius: 2px;
+}
+window titlebar .window_title {
+    padding-top: 5px;
+    display: inline-block;
+    cursor: default;
+}
+window titlebar .window_controls {
+    position: absolute;
+    right: 0;
+}
+window titlebar .window_controls {
+    position: absolute;
+    right: 0;
+}
+window titlebar .window_controls span.control {
+    box-shadow: 0 0 0 1px rgb(95, 95, 95), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    margin-right: 1px;
+    padding: 1px 0;
+    text-align: center;
+    width: 26px;
+    display: inline-block;
+}
+window titlebar .window_controls span.control.close {
+    width: 42px;
+}
+window titlebar .window_controls span.control.min {
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-bottom-left-radius: 4px;
+}
+window titlebar .window_controls span.control.close {
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-bottom-right-radius: 3px;
+}
+.sprite_icon {
+    background-image: url('images/sprite.png');
+    display: inline-block;
+}
+.sprite_icon.close {
+    width: 11px;
+    height: 10px;
+    background-position: 0 0;
+}
+.sprite_icon.min {
+    width: 12px;
+    height: 10px;
+    background-position: 0 -20px;
+}
+.sprite_icon.max {
+    width: 12px;
+    height: 10px;
+    background-position: 0 -10px;
 }
 .recent_program_item {
     cursor: pointer;

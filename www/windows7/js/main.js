@@ -28,6 +28,9 @@ $(function() {
     /** Icon draggable **/
     Windows.Screen.find('icon').draggable();
 
+    /** Windows draggable **/
+    $('window').draggable({ handle: "titlebar" }).resizable({ handles: 'n, e, s, w, ne, se, sw, nw'});
+
     /** Icon mouse events **/
     Windows.Screen.on('mousedown', 'icon', function(e) {
         var theIcon = $(this);
