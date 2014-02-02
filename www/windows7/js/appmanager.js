@@ -60,8 +60,6 @@ AppManager.StartApp = function(appname) {
 		}
 
 		Windows.setCursor();
-	}, 1000);		
-
-
+	}, 1000);
 }
 
