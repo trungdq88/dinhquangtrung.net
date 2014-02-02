@@ -283,6 +283,9 @@ window.max {
     width: auto !important;
     border-radius: 0 !important;
 }
+window.min {
+    display: none !important;
+}
 window.focus {
     background-color: rgba(149, 189, 224, 0.85);
     z-index: 151;
@@ -333,7 +336,7 @@ window titlebar .window_controls {
     right: 0;
 }
 window.focus titlebar .window_controls span.control {
-    box-shadow: 0 14px 0 -5px rgba(255, 255, 255, 0.5) inset, 0 0 0 1px rgb(95, 95, 95), 0 0 0 1px rgba(255, 255, 255, 0.5) inset,0 0 30px -4px rgba(0, 0, 0, 0.78) inset, 0 -8px 10px -5px white inset;
+    box-shadow: 0 14px 0 -5px rgba(255, 255, 255, 0.5) inset, 0 0 0 1px rgb(95, 95, 95), 0 0 0 1px rgba(255, 255, 255, 0.5) inset,0 0 30px -4px rgba(0, 0, 0, 0.5) inset, 0 -8px 10px -5px white inset;
 }
 window titlebar .window_controls span.control {
     box-shadow: 0 0 0 1px rgb(95, 95, 95), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
@@ -355,8 +358,11 @@ window titlebar .window_controls span.control:hover {
 window.focus titlebar .window_controls span.control:active {
     background-color: rgba(0, 0, 0, 0.5);
 }
-window titlebar .window_controls span.control.close:hover {
+window.focus titlebar .window_controls span.control.close:hover {
     background-color: #FF1F00;
+}
+window titlebar .window_controls span.control.close:hover {
+    background-color: rgb(233, 115, 115);
 }
 window.focus titlebar .window_controls span.control.close:active {
     background-color: #8F1200;
@@ -370,6 +376,52 @@ window titlebar .window_controls span.control.close {
     -webkit-border-bottom-right-radius: 3px;
     -moz-border-radius-bottomright: 3px;
     border-bottom-right-radius: 3px;
+}
+window content iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+tasks {
+    position: absolute;
+    left: 60px;
+    bottom: 0;
+    right: 0;
+    top: 0;
+}
+tasks .task {
+    display: inline-block;
+    height: 29px;
+    cursor: default;
+    float: left;
+    padding: 5px 10px;
+    margin-bottom: 1px;
+    color: white;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset, 0 0 0 1px rgba(0, 0, 0, 0.22), 0 25px 15px -10px rgba(255, 255, 255, 0.26) inset, 200px 592px 20px -600px rgba(255, 255, 255, 0.22) inset;
+    margin-right: 4px;
+    border-radius: 2px;
+    min-width: 160px;
+    transition: box-shadow 0.2s, background-color 0.2s, width 0.2s;
+    -webkit-transition: box-shadow 0.2s, background-color 0.2s, width 0.2s;
+    -moz-transition: box-shadow 0.2s, background-color 0.2s, width 0.2s;
+    -ms-transition: box-shadow 0.2s, background-color 0.2s, width 0.2s;
+
+}
+.task.active {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.task:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.59) inset, 0 0 0 1px rgba(0, 0, 0, 0.34), 0 19px 15px -10px rgba(255, 255, 255, 0.35) inset, 200px 592px 20px -600px rgba(255, 255, 255, 0.4) inset;
+}
+.task:active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.task img {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
 }
 .sprite_icon {
     background-image: url('images/sprite.png');

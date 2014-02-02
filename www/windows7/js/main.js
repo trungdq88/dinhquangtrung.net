@@ -59,38 +59,8 @@ $(function() {
     });
 
     /** Set focus for windows **/
-    Windows.Screen.on('mousedown', 'window', function(e) {
-        if (e.button == Windows.MOUSE_LEFT_BUTTON) {
-            Windows.setFocusTo($(this));
-        }
-    })
-
-    Windows.Screen.on('mouseup', 'window', function(e) {
-        if (e.button == Windows.MOUSE_LEFT_BUTTON) {
-            if ($(e.target).hasClass('close')) {
-                $(this).fadeOut(200);
-            } else if ($(e.target).hasClass('max')) {
-                if ($(this).hasClass('max')) {
-                    Windows.setWindowsSize($(this), 'normal');
-                } else {
-                    Windows.setWindowsSize($(this), 'max');
-                }
-            }
-
-        } else if (e.button == Windows.MOUSE_MIDDLE_BUTTON) {
-            // Show context menu
-        }
-    });
-
-    Windows.Screen.on('dblclick', 'window', function(e) {
-        if ($(e.target).is('titlebar') || $(e.target).hasClass("window_title")) {
-            if ($(this).hasClass('max')) {
-                Windows.setWindowsSize($(this), 'normal');
-            } else {
-                Windows.setWindowsSize($(this), 'max');
-            } 
-        }
-    });
+    WindowsManager.initWindowsEvents();
+    
 
     /** Trigger start menu **/ 
     Windows.StartMenu.click(function(e) {
@@ -122,4 +92,9 @@ $(window).load(function() {
     // Set default cursor
     Windows.setCursor();
 
+    // Add a sample window
+    WindowsManager.AddWindow('Hello 7', 'netbeans', 'about:blank');
+    WindowsManager.AddWindow('Hello 8', 'cstrike', 'about:blank');
+    WindowsManager.AddWindow('Hello 9', 'wordpress', 'about:blank');
+    WindowsManager.AddWindow('Hello 10', 'war3', 'about:blank');
 }); // End window load

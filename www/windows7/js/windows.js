@@ -11,6 +11,8 @@ Windows.MOUSE_RIGHT_BUTTON = 2;
 
 Windows.TASKBAR_HEIGHT = 30;
 
+Windows.focusChangeListener = Array();
+
 Windows.setFocusTo = function(obj) {
 	Windows.Screen.find('*').removeClass('focus');
 	if (obj !== undefined) {
@@ -18,6 +20,13 @@ Windows.setFocusTo = function(obj) {
 	} else {
 		// Set focus to no where
 	}
+
+	for (var i = Windows.focusChangeListener.length - 1; i >= 0; i--) {
+		if (typeof Windows.focusChangeListener[i] === "function") {
+			Windows.focusChangeListener[i]();
+		}
+	};
+
 }
 
 /********************************************************
