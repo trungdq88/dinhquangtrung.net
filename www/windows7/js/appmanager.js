@@ -61,5 +61,6 @@ AppManager.StartApp = function(appname) {
 
 		Windows.setCursor();
 	}, 1000);
+	
 }
 
