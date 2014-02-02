@@ -92,7 +92,9 @@ $(window).load(function() {
     // Set default cursor
     Windows.setCursor();
 
-    // Add a sample window
-    WindowsManager.AddWindow('Hello 7', 'netbeans', '../game/cstrike');
-    WindowsManager.AddWindow('Hello 8', 'cstrike', '../game/cstrike');
+    // Show the main window
+    setTimeout(function() {
+        AppManager.StartApp('wordpress');
+    }, 700);
+
 }); // End window load

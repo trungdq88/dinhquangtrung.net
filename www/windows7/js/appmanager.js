@@ -4,22 +4,34 @@ AppManager.Apps = {
 	'cstrike': {
 		name: 'Counter Strike 1.6',
 		type: 'FullScreenApp',
-		url: '/game/cstrike',
+		url: '/game/cstrike'
 	},
 	'learnj': {
 		name: 'Learn Japanese',
-		type: 'FullScreenApp',
+		type: 'Window',
 		url: '/apps/learnj',
+		size: {
+			width: 1000,
+			height: 650
+		}
 	},
 	'github': {
 		name: 'GitHub',
 		type: 'Link',
-		url: 'https://github.com/trungdq88/dinhquangtrung.net'
+		url: 'https://github.com/trungdq88/dinhquangtrung.net',
+		size: {
+			width: 900,
+			height: 600
+		}
 	},
 	'wordpress': {
 		name: 'My blog',
-		type: 'FullScreenApp',
-		url: '/blog'
+		type: 'Window',
+		url: '/blog',
+		size: {
+			width: 900,
+			height: 600
+		}
 	}
 }
 
@@ -37,6 +49,9 @@ AppManager.StartApp = function(appname) {
 					break;
 				case 'Link':
 					window.location = destination.url;
+					break;
+				case 'Window':
+					WindowsManager.AddWindow(destination.name, appname, destination.url, Helper.getCenterPosition(destination.size));
 					break;
 				default:
 					alert('App type is not supported!');

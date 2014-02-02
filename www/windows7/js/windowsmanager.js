@@ -70,6 +70,8 @@ WindowsManager.activeTaskbarItem = function(id) {
 
 WindowsManager.AddWindow = function(title, icon, url, position) {
 	var id = WindowsManager.GenerateId();
+
+	// Prepare HTML
 	var windowHtml = '<window windowId="' + id + '">' +
                     '<titlebar>' +
                         '<img src="images/icons/' + icon + '.png" alt="' + title + '"/>' +
@@ -84,13 +86,17 @@ WindowsManager.AddWindow = function(title, icon, url, position) {
                 '</window>';
 
      var taskbarHtml = '<div class="task" windowId="' + id + '"><img src="images/icons/' + icon + '.png" />' + title + '</div>';
+
+     // Add to HTML
      $('windows').append(windowHtml);
      $('tasks').append(taskbarHtml);
 
+     // Set events & add to windows stack
      var windowObj = WindowsManager.getWindow(id);
      Windows.setWindowsMoveable(windowObj, true);
-
      WindowsManager.WindowsStack.add(id);
+
+     // Set position
      if (position === undefined) {
     	windowObj.css({
 	     	'left': WindowsManager.DEFAULT_WINDOW_POSITION_X + WindowsManager.DEFAULT_WINDOW_POSITION_SHIFT * (WindowsManager.WindowsStack.stack.length % 10),
@@ -101,6 +107,9 @@ WindowsManager.AddWindow = function(title, icon, url, position) {
      } else {
     	windowObj.css(position);
      }
+     
+     // Set focus
+	Windows.setFocusTo(windowObj);
      
 
 }
