@@ -79,7 +79,7 @@ WindowsManager.AddWindow = function(title, icon, url, position) {
                         '</span>' +
                     '</titlebar>' +
                     '<content>' +
-                        '<iframe src="' + url + '"></iframe>' +
+                        '<div class="iframe_mask"></div><iframe src="' + url + '"></iframe>' +
                     '</content>' +
                 '</window>';
 
@@ -89,15 +89,6 @@ WindowsManager.AddWindow = function(title, icon, url, position) {
 
      var windowObj = WindowsManager.getWindow(id);
      Windows.setWindowsMoveable(windowObj, true);
-
-     // Send events from iframe to its parent
-     windowObj.find('iframe').load(function() {
-     	console.log('asd');
-		windowObj.find('iframe').contents().mousedown(function() {
-	 		WindowsManager.WindowsStack.moveToTop(windowObj.attr('windowId'));
-	        Windows.setFocusTo(windowObj);
-	     });
-     });
 
      WindowsManager.WindowsStack.add(id);
      if (position === undefined) {

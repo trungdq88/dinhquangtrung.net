@@ -63,21 +63,31 @@ Windows.setWindowsMoveable = function(obj, set) {
 		        cancel: '.window_controls',
 		        handle: "titlebar",
 		        start: function(e, f) {
+		        	// Dragging when windows is in maximum state > to normal, this code below is to keep to mouse position
 		        	if ($(f.helper).hasClass('max')) {
 		        		$(this).data("offsetX",e.offsetX - 300);
                     	Windows.setWindowsSize(f.helper, 'normal');
 		        	} else {
 		        		$(this).data("offsetX", 0);
 		        	}
+
+		        	// Display the iframe_mask so the dragging will not be interupted by iframes
+		        	// See: http://stackoverflow.com/a/5646590/1420186
+		        	$(this).addClass('showmask');
 			    },
 				drag: function(event,ui){
+					// Reposition in case of state from Maximum > Normal
 					var st = parseInt($(this).data("offsetX"));
 					ui.position.left += st;
 				},
 		        stop: function(e, f) {
+		        	// If the title bar is overflowed, then reposition
 		        	if (f.offset.top < 0) {
 		        		Windows.setWindowsSize(f.helper, 'max');
 		        	}
+
+		        	// Hide the iframe_mask
+		        	$(this).removeClass('showmask');
 			    }
 	    	});
 		} else {
@@ -88,6 +98,9 @@ Windows.setWindowsMoveable = function(obj, set) {
 		        handles: 'n, e, s, w, ne, se, sw, nw',
 		        minHeight: 150,
 		        minWidth: 200,
+		        start: function(e, f) {
+		        	$(this).addClass('showmask');
+		        },
 		        stop: function(e, f) {
 		        	if (f.position.top < 0) {
 		        		// Windows.setWindowsSize(f.helper, 'max');
@@ -97,6 +110,7 @@ Windows.setWindowsMoveable = function(obj, set) {
 		        			height: 'auto'
 		        		});
 		        	}
+		        	$(this).removeClass('showmask');
 			    }
 		    });
 		} else {

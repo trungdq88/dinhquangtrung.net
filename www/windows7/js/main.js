@@ -93,8 +93,6 @@ $(window).load(function() {
     Windows.setCursor();
 
     // Add a sample window
-    WindowsManager.AddWindow('Hello 7', 'netbeans', 'about:blank');
-    WindowsManager.AddWindow('Hello 8', 'cstrike', 'about:blank');
-    WindowsManager.AddWindow('Hello 9', 'wordpress', 'about:blank');
-    WindowsManager.AddWindow('Hello 10', 'war3', 'about:blank');
+    WindowsManager.AddWindow('Hello 7', 'netbeans', '../game/cstrike');
+    WindowsManager.AddWindow('Hello 8', 'cstrike', '../game/cstrike');
 }); // End window load
