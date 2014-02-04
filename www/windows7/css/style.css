@@ -377,6 +377,15 @@ window titlebar .window_controls span.control.close {
     -moz-border-radius-bottomright: 3px;
     border-bottom-right-radius: 3px;
 }
+window titlebar .control.full {
+    margin-right: 7px !important;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-bottom-left-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    -moz-border-radius-bottomright: 4px;
+    border-bottom-right-radius: 4px;
+}
 window content iframe {
     border: none;
     position: absolute;
@@ -446,15 +455,20 @@ tasks .task {
     height: 10px;
     background-position: 0 0;
 }
+.sprite_icon.max {
+    width: 12px;
+    height: 10px;
+    background-position: 0 -10px;
+}
 .sprite_icon.min {
     width: 12px;
     height: 10px;
     background-position: 0 -20px;
 }
-.sprite_icon.max {
+.sprite_icon.full {
     width: 12px;
     height: 10px;
-    background-position: 0 -10px;
+    background-position: 0 -30px;
 }
 .recent_program_item {
     cursor: pointer;

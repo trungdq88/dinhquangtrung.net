@@ -93,8 +93,8 @@ $(window).load(function() {
     Windows.setCursor();
 
     // Show the main window
-    setTimeout(function() {
-        AppManager.StartApp('wordpress');
-    }, 700);
+    // setTimeout(function() {
+    //     AppManager.StartApp('wordpress');
+    // }, 700);
 
 }); // End window load

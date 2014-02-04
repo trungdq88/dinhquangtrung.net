@@ -77,7 +77,7 @@ WindowsManager.AddWindow = function(title, icon, url, position) {
                         '<img src="images/icons/' + icon + '.png" alt="' + title + '"/>' +
                         '<span class="window_title">' + title + '</span>' +
                         '<span class="window_controls">' +
-                            '<span class="control min"><span class="sprite_icon min"></span></span><span class="control max"><span class="sprite_icon max"></span></span><span class="control close"><span class="sprite_icon close"></span></span>' +
+                            '<span title="Fullscreen" class="control full"><span class="sprite_icon full"></span></span><span title="Minimize" class="control min"><span class="sprite_icon min"></span></span><span title="Maximize" class="control max"><span class="sprite_icon max"></span></span><span title="Close" class="control close"><span class="sprite_icon close"></span></span>' +
                         '</span>' +
                     '</titlebar>' +
                     '<content>' +
@@ -184,6 +184,8 @@ WindowsManager.initWindowsEvents = function() {
             	if (!$(this).hasClass('min')) {
 					WindowsManager.doMinimize($(this).attr('windowId'));
 				}
+            } else if ($(e.target).hasClass('full')) {
+            	window.location = $(this).find('iframe').attr('src');
             }
 
         } else if (e.button == Windows.MOUSE_MIDDLE_BUTTON) {

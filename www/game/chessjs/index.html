@@ -1,0 +1,29 @@
+
+
+
+
+
+<style>
+html, body {
+	padding: 0;
+	margin: 0;
+}
+iframe {
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+</style>
+<script>
+function joinroom() {
+	var the_iframe = document.getElementById('game_iframe');
+	the_iframe.src = 'data:text/html,please wait...';
+	setTimeout(function() {
+		the_iframe.src = 'http://dinhquangtrung.net:8818/#' + document.getElementById('roomname').value;
+	}, 2000);
+}
+</script>
+<div style="position: fixed; right: 0; top: 0;">
+	Room: <input id="roomname" type="text"/> <input type="button" onclick="joinroom();" id="joinroom" value="Join"/>
+</div>
+<iframe id="game_iframe" src="http://dinhquangtrung.net:8818"></iframe>

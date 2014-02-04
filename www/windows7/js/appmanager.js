@@ -32,6 +32,15 @@ AppManager.Apps = {
 			width: 900,
 			height: 600
 		}
+	},
+	'chessjs': {
+		name: 'ChessJS',
+		type: 'Window',
+		url: '/game/chessjs',
+		size: {
+			width: 1100,
+			height: 700
+		}
 	}
 }
 
