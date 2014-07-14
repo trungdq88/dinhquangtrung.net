@@ -15,6 +15,15 @@ AppManager.Apps = {
 			height: 650
 		}
 	},
+	'randomchat': {
+		name: 'Random Chat',
+		type: 'Window',
+		url: '/apps/chat',
+		size: {
+			width: 600,
+			height: 600
+		}
+	},
 	'github': {
 		name: 'GitHub',
 		type: 'Link',
