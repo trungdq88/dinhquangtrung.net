@@ -42,6 +42,15 @@ AppManager.Apps = {
 			height: 600
 		}
 	},
+	'profile': {
+		name: 'My blog',
+		type: 'Window',
+		url: '/blog/about/',
+		size: {
+			width: 900,
+			height: 600
+		}
+	},
 	'chessjs': {
 		name: 'ChessJS',
 		type: 'Window',

@@ -79,6 +79,12 @@ $(function() {
         Windows.setFocusTo();
     });
 
+    /** User profile clicker **/
+    $('#avatar').click(function() {
+        AppManager.StartApp('profile');
+        Windows.setFocusTo();
+    });
+
     /**********************************
     PREPARE FOR DOMs
     **********************************/
