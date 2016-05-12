@@ -15,12 +15,21 @@ AppManager.Apps = {
 			height: 650
 		}
 	},
-	'randomchat': {
-		name: 'Random Chat',
+	'sing': {
+		name: 'Sing the right songs',
 		type: 'Window',
-		url: '/apps/chat',
+		url: 'http://trungdq88.github.io/sing-the-right-songs/',
 		size: {
 			width: 600,
+			height: 600
+		}
+	},
+	'schoolrevisiontool': {
+		name: 'School Revision Tool',
+		type: 'Window',
+		url: 'http://trungdq88.github.io/school-revision-tool/',
+		size: {
+			width: 400,
 			height: 600
 		}
 	},
@@ -36,7 +45,7 @@ AppManager.Apps = {
 	'wordpress': {
 		name: 'My blog',
 		type: 'Window',
-		url: '/blog',
+		url: 'https://trungdq88.github.io/',
 		size: {
 			width: 900,
 			height: 600
@@ -45,7 +54,7 @@ AppManager.Apps = {
 	'profile': {
 		name: 'My blog',
 		type: 'Window',
-		url: '/blog/about/',
+		url: 'https://trungdq88.github.io/about.html',
 		size: {
 			width: 900,
 			height: 600
@@ -54,18 +63,28 @@ AppManager.Apps = {
 	'chessjs': {
 		name: 'ChessJS',
 		type: 'Window',
-		url: '/game/chessjs',
+		url: 'https://thawing-wave-3281.herokuapp.com/',
 		size: {
 			width: 1100,
 			height: 700
 		}
+	},
+	'smartdoge': {
+		name: 'Smart Doge',
+		type: 'Window',
+		url: 'http://trungdq88.github.io/smart-doge',
+		size: {
+			width: 700,
+			height: 700
+		}
 	}
-}
+};
 
 AppManager.StartApp = function(appname) {
 	Windows.setCursor('progress');
 
 	var destination = AppManager.Apps[appname];
+  console.log(AppManager.Apps);
 	setTimeout(function() {
 		if (destination === undefined) {
 			alert('This app is not ready yet!');
