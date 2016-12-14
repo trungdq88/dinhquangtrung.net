@@ -34,11 +34,11 @@ AppManager.Apps = {
 		}
 	},
 	'github': {
-		name: 'GitHub',
-		type: 'Link',
-		url: 'https://github.com/trungdq88/dinhquangtrung.net',
+		name: 'GitHub Explorer',
+		type: 'Window',
+		url: 'https://github-e.com/#/user/trungdq88',
 		size: {
-			width: 900,
+			width: 400,
 			height: 600
 		}
 	},
