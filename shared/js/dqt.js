@@ -1,3 +1,3 @@
 var DQT = DQT || {};
 
-DQT.baseUrl = "http://dinhquangtrung.net/"
+DQT.baseUrl = "https://dinhquangtrung.net/"
