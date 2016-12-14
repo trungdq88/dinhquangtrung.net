@@ -33,7 +33,7 @@ AppManager.Apps = {
 			height: 600
 		}
 	},
-	'github': {
+	'github_explorer': {
 		name: 'GitHub Explorer',
 		type: 'Window',
 		url: 'https://github-e.com/#/user/trungdq88',
