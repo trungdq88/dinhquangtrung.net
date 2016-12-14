@@ -1,8 +1,0 @@
-@font-face {
-    font-family: 'SegoeUIRegular';
-    src: url('segoeui.eot');
-    src: url('segoeui.eot') format('embedded-opentype'),
-         url('segoeui.woff') format('woff'),
-         url('segoeui.ttf') format('truetype'),
-         url('segoeui.svg#SegoeUIRegular') format('svg');
-}
