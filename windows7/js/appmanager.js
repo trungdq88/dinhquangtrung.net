@@ -18,7 +18,7 @@ AppManager.Apps = {
 	'sing': {
 		name: 'Sing the right songs',
 		type: 'Window',
-		url: 'http://trungdq88.github.io/sing-the-right-songs/',
+		url: 'https://trungdq88.github.io/sing-the-right-songs/',
 		size: {
 			width: 600,
 			height: 600
@@ -27,7 +27,7 @@ AppManager.Apps = {
 	'schoolrevisiontool': {
 		name: 'School Revision Tool',
 		type: 'Window',
-		url: 'http://trungdq88.github.io/school-revision-tool/',
+		url: 'https://trungdq88.github.io/school-revision-tool/',
 		size: {
 			width: 400,
 			height: 600
@@ -72,7 +72,7 @@ AppManager.Apps = {
 	'smartdoge': {
 		name: 'Smart Doge',
 		type: 'Window',
-		url: 'http://trungdq88.github.io/smart-doge',
+		url: 'https://trungdq88.github.io/smart-doge',
 		size: {
 			width: 700,
 			height: 700
