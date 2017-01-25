@@ -129,6 +129,7 @@ desktop {
     background-image: url('images/wallpaper.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center center;
 }
 
 icon {
